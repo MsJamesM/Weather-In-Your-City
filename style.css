@@ -1,0 +1,63 @@
+body {
+    background-color: #6653b8;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: rgb(92, 62, 175);
+}
+
+h1 {
+    font-size: 30px;
+    color: #d6dbe1;
+}
+
+#widgetContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2%;
+    height: 60%;
+    width: 100%;
+}
+
+.citiesNav {
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background-color: #7663c9;
+    padding-right: 3%;
+    padding-left: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 80%;
+}
+
+.citiesNav a {
+    text-decoration: none;
+    font-size: 20px;
+    color:#9c86d7;
+}
+
+.cityDetails {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    background-color: #7663c9;
+    color: #8c7ccf;
+    padding: 3%;
+    width: 80%;
+    height: 60%;
+}
+
+.fiveDay {
+    background-color: #7663c9;
+    color: #8c7ccf;
+    width: 14.5%;
+    margin: 1%;
+    padding: 2%;
+}
