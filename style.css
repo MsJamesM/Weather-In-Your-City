@@ -4,13 +4,57 @@ body {
 
 header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: rgb(92, 62, 175);
 }
 
-h1 {
-    font-size: 30px;
-    color: #d6dbe1;
+#searchBar {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 30%;
+}
+
+.mr-sm-2 {
+    opacity: 0.9;
+    border-radius: 0;
+    background-color: #f7f1ff;
+}
+
+.btn-secondary {
+    background-color: #6653b8;
+    border-radius: 0;
+    color: #9887e3;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #826fd5;
+}
+
+.icon {
+    font-size: 5em;
+}
+
+#headerText {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.headerCity {
+    background: -webkit-linear-gradient(#d881ee, #a675f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 265%;
+}
+
+.headerTemp {
+    font-size: 230%;
+    padding-top: 2%;
+    padding-left: 5%;
+    color: #ebe4ff;
 }
 
 #widgetContainer {
