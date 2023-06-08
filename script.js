@@ -36,3 +36,11 @@ inputSubmit.addEventListener("click", function () {
   const cityInput = document.getElementById("cityInput").value;
   weather.findWeather(cityInput);
 });
+
+cityInput.addEventListener("keypress", function (event) {
+  $("cityInput").value;
+  if (event.key === "Enter") {
+    event.preventDefault();
+    weather.findWeather(cityInput.value);
+  }
+});
