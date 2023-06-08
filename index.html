@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://kit.fontawesome.com/d7ffd59b37.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,16 +29,14 @@
         <button
           class="btn btn-secondary my-2 my-sm-0"
           type="submit"
-          id="submit"
-        >
-          Submit
+          id="inputSubmit">
+          <i class="fa-solid fa-magnifying-glass"></i>
         </button>
-        <form class="form-inline my-2 my-lg-0" id="searchForm">
-          <input
+        <form class="form-inline my-2 my-lg-0" id="search">
+          <input id="cityInput"
             class="form-control mr-sm-2"
-            type="search"
+            type="text"
             placeholder="Search for a city"
-            aria-label="Search"
           /></form
       ></span>
     </header>
@@ -51,12 +50,13 @@
       <p class="citysName"></p>
       <h1 class="bodyCity"></h1>
       <h1 class="bodyTemp"></h1>
-      <img src="https://openweathermap.org/img/wn/04n.png" class="icon" />
+        <img src="https://openweathermap.org/img/wn/04n.png" class="icon"
+      /></span>
       <span class="weatherDescription"></span>
     </div>
 
     <section id="widgetContainer">
-      <div class="humidity"></div>
+      <div class="fiveDay">Placeholder</div>
 
       <div class="fiveDay">Placeholder</div>
 

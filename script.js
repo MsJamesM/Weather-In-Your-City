@@ -29,39 +29,10 @@ let weather = {
     document.querySelector(".weatherDescription").innerText = description;
   },
 };
-/*
-function handleUserInput() {}
 
-weather.findWeather("");
+// ----------- adding event listener to "submit" button ---------------
 
-fetch(
-  "https://api.openweathermap.org/data/3.0/onecall?lat=" +
-    lat +
-    "&lon=" +
-    lon +
-    "&appid=b8fc387331c767a99a233c98e09002f5&units=imperial"
-)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-  });
-
-// on "submit", js searches for user's inputted city
-
-/* create functions for: 
-
-  - fetch current date
-  - search for a city (via event listener)
-  - weather results for that city are saved to local storage
-  - searched city name added to top panel button/link
-  - display results for next five days after "search" event listener
-	- results include: date, temp, wind, humidity, icon, desc., etc.
-  
-  - click on city from top panel
-  - previous results display	 
-
-  * attach event listeners to the bottom of the page for clarity
-
-*/
+inputSubmit.addEventListener("click", function () {
+  const cityInput = document.getElementById("cityInput").value;
+  weather.findWeather(cityInput);
+});
