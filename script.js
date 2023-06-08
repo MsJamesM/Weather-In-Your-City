@@ -22,8 +22,8 @@ let weather = {
     const { temp } = data.main;
     document.querySelector(".headerCity").innerText = name;
     document.querySelector(".bodyCity").innerText = name;
-    document.querySelector(".headerTemp").innerText = temp + "°";
-    document.querySelector(".bodyTemp").innerText = temp + "°";
+    document.querySelector(".headerTemp").innerText = Math.round(temp) + "°";
+    document.querySelector(".bodyTemp").innerText = Math.round(temp) + "°";
     document.querySelector(".icon").src =
       "https://openweathermap.org/img/wn/" + icon + ".png";
     document.querySelector(".weatherDescription").innerText = description;
@@ -35,6 +35,7 @@ let weather = {
 inputSubmit.addEventListener("click", function () {
   const cityInput = document.getElementById("cityInput").value;
   weather.findWeather(cityInput);
+  document.querySelector(".icon").style.display = "block";
 });
 
 cityInput.addEventListener("keypress", function (event) {
@@ -42,5 +43,6 @@ cityInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
     weather.findWeather(cityInput.value);
+    document.querySelector(".icon").style.display = "block";
   }
 });
