@@ -98,18 +98,20 @@ header {
     
 }
 
-.fiveDay {
-    background-color: #7663c9;
-    color: #8c7ccf;
-    width: 14.5%;
-    margin: 1%;
-    padding: 2%;
+#forecast-container {
+    margin-left: auto;
+    margin-right: auto;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2%;
+        width: 80%;
+        height: 60%;
 }
 
-.humidity {
+article {
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
     background-color: #7663c9;
     color: #8c7ccf;
-    width: 14.5%;
-    margin: 1%;
-    padding: 2%;
 }
