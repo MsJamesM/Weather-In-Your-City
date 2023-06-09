@@ -63,26 +63,14 @@ let forecast = {
         this.key
     )
       .then((response) => response.json())
-      .then((data) => forecastDisplay(data));
+      .then((data) => {
+        let forecastList = data.list.slice(0, 5);
+        let forecasts = forecastList.map((forecast) => ({
+          date: forecast.dt_txt.split(" ")[0],
+          temperature: Math.round(forecast.main.temp - 273.15),
+          description: forecast.weather[0].description,
 
-    function forecastDisplay(data) {
-      const cityName = data.city.name;
-      const forecastList = data.list;
-      for (let i = 0; i < forecastList.length; i++) {
-        const forecastData = forecastList[i];
-        const { icon } = forecastData.weather[0];
-        const { temp } = forecastData.main;
-
-        // --------------  displaying five day forecast -------------------
-
-        document.querySelector("#dayOne").innerText =
-          cityName + Math.round(temp) + "°" + icon;
-        document.querySelector("#dayTwo").innerText =
-          cityName + Math.round(temp) + "°" + icon;
-
-        document.querySelector("#dayOne").src =
-          "https://openweathermap.org/img/wn/" + icon + ".png";
-      }
-    }
+          // ?? what the holy console log
+      });
   },
 };
