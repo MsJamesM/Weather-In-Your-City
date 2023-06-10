@@ -17,14 +17,16 @@ let weather = {
     const { name } = data;
     const { icon } = data.weather[0];
     const { description } = data.weather[0];
+    const fixDesc = description.charAt(0).toUpperCase() + description.slice(1);
+
     const { temp } = data.main;
-    document.querySelector(".headerCity").innerText = name; // don't convert to jquery atm
+    document.querySelector(".headerCity").innerText = name;
     document.querySelector(".bodyCity").innerText = name;
     document.querySelector(".headerTemp").innerText = Math.round(temp) + "°";
     document.querySelector(".bodyTemp").innerText = Math.round(temp) + "°";
     document.querySelector(".icon").src =
       "https://openweathermap.org/img/wn/" + icon + ".png";
-    document.querySelector(".weatherDescription").innerText = description;
+    document.querySelector(".weatherDescription").innerText = fixDesc;
   },
 };
 
@@ -66,19 +68,17 @@ let forecast = {
           forecastList.push(data.list[i]);
         }
 
-        const forecasts = forecastList.map((forecast) => ({
-          date: new Date(forecast.dt_txt).toLocaleDateString("en-US", {
-            month: "long",
-            weekday: "long",
-            day: "numeric",
-            ordinal: "auto",
-          }),
-          tempHigh: Math.round(forecast.main.temp_max),
-          tempLow: Math.round(forecast.main.temp_min),
-          humidity: forecast.main.humidity,
-        }));
+        console.log(data);
 
-        console.log(forecasts);
+        const forecasts = forecastList.map((forecast) => ({
+          icon: forecast.weather[0].icon,
+          date: new Date(forecast.dt_txt).toLocaleDateString("en-US", {
+            weekday: "long",
+          }),
+          temp: Math.round(forecast.main.temp),
+          humidity: forecast.main.humidity,
+          wind: Math.round(forecast.wind.speed),
+        }));
 
         const widgetContainer = document.getElementById("forecast-container");
         widgetContainer.innerHTML = "";
@@ -86,11 +86,12 @@ let forecast = {
         forecasts.forEach((forecast) => {
           const forecastItem = document.createElement("article");
           forecastItem.innerHTML = `
-            <p>${forecast.date}
-            <br> High: ${forecast.tempHigh}°F
-            <br> Low: ${forecast.tempLow}°F
-            <br> Humidity: ${forecast.humidity}%</p>
-          `;
+          <img src="https://openweathermap.org/img/wn/${forecast.icon}.png" alt="Forecast Icon"></p>
+            <span id="widgetDate">${forecast.date}</span>
+            <br> Temperature: ${forecast.temp}°F
+            <br> Humidity: ${forecast.humidity}%
+            <br> Wind: ${forecast.wind}%
+    <br>`;
           widgetContainer.appendChild(forecastItem);
         });
       });

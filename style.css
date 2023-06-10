@@ -1,5 +1,6 @@
 body {
     background-color: #6653b8;
+    color: #8a77e0;
 }
 
 header {
@@ -91,7 +92,6 @@ header {
     align-items: center;
     margin-top: 2%;
     background-color: #7663c9;
-    color: #8c7ccf;
     padding: 3%;
     width: 80%;
     height: 60%;
@@ -99,17 +99,23 @@ header {
 }
 
 #forecast-container {
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 7.5%;
+    margin-right: 7.5%;
     margin-top: 2%;
-    width: 80%;
-    height: 60%;
+}
+
+#widgetDate {
+    color: #9c85ff;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 article {
-    display: flex;
-    justify-content: space-between;
     padding: 2%;
+    border: 7px solid #6653b8;
     background-color: #7663c9;
-    color: #8c7ccf;
+    color: #917ee4;
+    text-align: center;
 }
