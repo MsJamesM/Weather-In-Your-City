@@ -67,11 +67,18 @@ let forecast = {
         }
 
         const forecasts = forecastList.map((forecast) => ({
-          date: forecast.dt_txt.split(" ")[0],
+          date: new Date(forecast.dt_txt).toLocaleDateString("en-US", {
+            month: "long",
+            weekday: "long",
+            day: "numeric",
+            ordinal: "auto",
+          }),
           tempHigh: Math.round(forecast.main.temp_max),
           tempLow: Math.round(forecast.main.temp_min),
           humidity: forecast.main.humidity,
         }));
+
+        console.log(forecasts);
 
         const widgetContainer = document.getElementById("forecast-container");
         widgetContainer.innerHTML = "";
