@@ -36,6 +36,7 @@ header {
 #headerText {
     display: flex;
     flex-direction: row;
+    width: 60%;
     align-items: center;
     font-family: 'Source Sans 3', sans-serif;
 }
@@ -49,18 +50,8 @@ header {
 
 .headerTemp {
     font-size: 230%;
-    padding-top: 2%;
-    padding-left: 5%;
+    padding-left: 2%;
     color: #ebe4ff;
-}
-
-#widgetContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2%;
-    height: 60%;
-    width: 100%;
 }
 
 .citiesNav {
@@ -98,7 +89,7 @@ header {
     
 }
 
-#forecast-container {
+#forecastContainer {
     display: flex;
     justify-content: space-around;
     margin-left: 7.5%;

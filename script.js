@@ -25,7 +25,7 @@ let weather = {
     document.querySelector(".headerTemp").innerText = Math.round(temp) + "°";
     document.querySelector(".bodyTemp").innerText = Math.round(temp) + "°";
     document.querySelector(".icon").src =
-      "https://openweathermap.org/img/wn/" + icon + ".png";
+      "https://openweathermap.org/img/wn/" + icon + "@2x.png";
     document.querySelector(".weatherDescription").innerText = fixDesc;
   },
 };
@@ -80,19 +80,19 @@ let forecast = {
           wind: Math.round(forecast.wind.speed),
         }));
 
-        const widgetContainer = document.getElementById("forecast-container");
-        widgetContainer.innerHTML = "";
+        const forecastContainer = document.getElementById("forecastContainer");
+        forecastContainer.innerHTML = "";
 
         forecasts.forEach((forecast) => {
           const forecastItem = document.createElement("article");
           forecastItem.innerHTML = `
-          <img src="https://openweathermap.org/img/wn/${forecast.icon}.png" alt="Forecast Icon"></p>
-            <span id="widgetDate">${forecast.date}</span>
-            <br> Temperature: ${forecast.temp}°F
-            <br> Humidity: ${forecast.humidity}%
-            <br> Wind: ${forecast.wind}%
+    <img src="https://openweathermap.org/img/wn/${forecast.icon}.png" alt="Forecast Icon"><br>
+    <span id="widgetDate">${forecast.date}</span>
+    <br> Temperature: ${forecast.temp}°F
+    <br> Humidity: ${forecast.humidity}%
+    <br> Wind: ${forecast.wind}%
     <br>`;
-          widgetContainer.appendChild(forecastItem);
+          forecastContainer.appendChild(forecastItem);
         });
       });
   },
