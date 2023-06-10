@@ -101,11 +101,9 @@ header {
 #forecast-container {
     margin-left: auto;
     margin-right: auto;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 2%;
-        width: 80%;
-        height: 60%;
+    margin-top: 2%;
+    width: 80%;
+    height: 60%;
 }
 
 article {

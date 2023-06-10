@@ -18,7 +18,7 @@ let weather = {
     const { icon } = data.weather[0];
     const { description } = data.weather[0];
     const { temp } = data.main;
-    document.querySelector(".headerCity").innerText = name;
+    document.querySelector(".headerCity").innerText = name; // don't convert to jquery atm
     document.querySelector(".bodyCity").innerText = name;
     document.querySelector(".headerTemp").innerText = Math.round(temp) + "°";
     document.querySelector(".bodyTemp").innerText = Math.round(temp) + "°";
@@ -50,7 +50,6 @@ cityInput.addEventListener("keypress", function (event) {
 // don't forget: add errors if input empty or invalid
 
 // ------------------ displaying five day forecast -------------------
-
 let forecast = {
   key: "e2c74133da560a3e8633772b5632f3bf",
   findForecast: function (city) {
@@ -62,27 +61,31 @@ let forecast = {
     )
       .then((response) => response.json())
       .then((data) => {
-        const forecastList = data.list.slice(0, 5);
+        const forecastList = [];
+        for (let i = 0; i < data.list.length; i += 8) {
+          forecastList.push(data.list[i]);
+        }
+
         const forecasts = forecastList.map((forecast) => ({
-          icon: forecast.weather[0].icon,
           date: forecast.dt_txt.split(" ")[0],
           tempHigh: Math.round(forecast.main.temp_max),
           tempLow: Math.round(forecast.main.temp_min),
           humidity: forecast.main.humidity,
         }));
 
-        const widgetContainer = document.createElement("article");
+        const widgetContainer = document.getElementById("forecast-container");
+        widgetContainer.innerHTML = "";
+
         forecasts.forEach((forecast) => {
           const forecastItem = document.createElement("article");
           forecastItem.innerHTML = `
-      <p>${forecast.date} <br> High: ${forecast.tempHigh}°F <br> Low: ${forecast.tempLow}°F <br> Humidity: ${forecast.humidity}%</p>
-    `;
+            <p>${forecast.date}
+            <br> High: ${forecast.tempHigh}°F
+            <br> Low: ${forecast.tempLow}°F
+            <br> Humidity: ${forecast.humidity}%</p>
+          `;
           widgetContainer.appendChild(forecastItem);
         });
-
-        const container = document.getElementById("forecast-container");
-        container.innerHTML = "";
-        container.appendChild(widgetContainer);
       });
   },
 };
