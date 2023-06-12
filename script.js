@@ -15,13 +15,13 @@ let weather = {
     )
       .then((response) => response.json())
       .then((data) => this.weatherDisplay(data));
-    console.log(city);
   },
 
   weatherDisplay: function (data) {
     const { name } = data;
     const { speed } = data.wind;
     const { humidity } = data.main;
+    const { all } = data.clouds;
     const { icon } = data.weather[0];
     const { description } = data.weather[0];
     const fixDesc = description.charAt(0).toUpperCase() + description.slice(1);
@@ -37,6 +37,8 @@ let weather = {
     document.getElementById("windIcon").style.display = "block";
     document.querySelector(".bodyHumidity").innerText = humidity + "%";
     document.getElementById("humidityIcon").style.display = "block";
+    document.querySelector(".bodyClouds").innerText = all + "%";
+    document.getElementById("cloudIcon").style.display = "block";
   },
 };
 
@@ -56,8 +58,6 @@ let forecast = {
         for (let i = 0; i < data.list.length; i += 8) {
           forecastList.push(data.list[i]);
         }
-
-        console.log(data);
 
         const forecasts = forecastList.map((forecast) => ({
           icon: forecast.weather[0].icon,

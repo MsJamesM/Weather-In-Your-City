@@ -142,6 +142,10 @@ a:hover {
     display: flex;
 }
 
+#clouds {
+    display: flex;
+}
+
 #forecastContainer {
     display: flex;
     justify-content: space-around;
