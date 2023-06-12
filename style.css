@@ -1,6 +1,7 @@
 body {
     background-color: #6653b8;
-    color: #8a77e0;
+    color: #9887e7;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 header {
@@ -55,10 +56,8 @@ header {
 }
 
 .citiesContainer {
-    display: flex;
-    justify-content: space-between;
-    overflow: hidden;
     white-space: nowrap;
+    overflow: hidden;
     margin-left: auto;
     margin-right: auto;
     margin-top: 3%;
@@ -68,19 +67,36 @@ header {
     padding-left: 3%;
     padding-top: 1%;
     padding-bottom: 1%;
-    max-height: 50%;
     width: 80%;
 }
 
 .citiesNav {
-    display: inline;
-    overflow: hidden;
-    white-space: nowrap;
     font-size: 20px;
-    color:#9c86d7;
 }
 
+.citiesNav a {
+    padding-right: 9%;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    font-family: 'Source Sans 3', sans-serif;
+    color: #9887e7;
+}
 
+a:hover {
+    color: #a797ef;
+}
+
+.cityDetails:empty:before {
+    content: attr(data-text);
+    color: #999999;
+}
+
+#placeholderDetails {
+    color: #8170d3;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: none;
+}
 
 .cityDetails {
     margin: auto;
@@ -88,8 +104,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-shadow: 1px 1px 3px #6658a9;
     background-color: #7663c9; 
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: bold;
     margin-top: 2%;
     padding: 3%;
     width: 80%;
@@ -105,7 +123,7 @@ header {
 }
 
 #widgetDate {
-    color: #a595ed;
+    color: #6653b8;
     font-weight: bold;
     font-size: 18px;
 }
@@ -114,6 +132,5 @@ article {
     padding: 2%;
     border: 7px solid #6653b8;
     background-color: #7663c9;
-    color: #917ee4;
     text-align: center;
 }

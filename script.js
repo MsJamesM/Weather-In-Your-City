@@ -20,6 +20,7 @@ let weather = {
     const fixDesc = description.charAt(0).toUpperCase() + description.slice(1);
 
     const { temp } = data.main;
+    $("#placeholderDetails").remove();
     document.querySelector(".headerCity").innerText = name;
     document.querySelector(".bodyCity").innerText = name;
     document.querySelector(".headerTemp").innerText = Math.round(temp) + "°";
@@ -31,7 +32,6 @@ let weather = {
 };
 
 // displaying five day forecast
-
 let forecast = {
   key: "e2c74133da560a3e8633772b5632f3bf",
   findForecast: function (city) {
@@ -78,7 +78,7 @@ let forecast = {
   },
 };
 
-// event listeners
+// local storage on click
 
 inputSubmit.addEventListener("click", function () {
   const cityInput = document.getElementById("cityInput").value;
@@ -86,15 +86,13 @@ inputSubmit.addEventListener("click", function () {
   forecast.findForecast(cityInput);
   document.querySelector(".icon").style.display = "block";
 
-  // local storage to click
-
-  let cities = localStorage.getItem("cities");
-  let citiesList = cities ? JSON.parse(cities) : [];
+  let citiesList = JSON.parse(localStorage.getItem("cities"));
   citiesList.push(cityInput);
   localStorage.setItem("cities", JSON.stringify(citiesList));
-  let citiesNav = document.getElementById("citiesNav");
-  citiesNav.innerText = citiesList.join(" ");
+  displayCities(citiesList);
 });
+
+// local storage on keypress
 
 cityInput.addEventListener("keypress", function (event) {
   $("cityInput").value;
@@ -105,24 +103,36 @@ cityInput.addEventListener("keypress", function (event) {
     forecast.findForecast(cityInput);
     document.querySelector(".icon").style.display = "block";
 
-    // local storage to keypress
-
-    let cities = localStorage.getItem("cities");
-    let citiesList = cities ? JSON.parse(cities) : [];
+    let citiesList = JSON.parse(localStorage.getItem("cities") || "[]");
     citiesList.unshift(cityInput);
     localStorage.setItem("cities", JSON.stringify(citiesList));
-    let citiesNav = document.getElementById("citiesNav");
-    citiesNav.innerText = citiesList.join("⠀⠀⠀⠀⠀⠀");
+    displayCities(citiesList);
   }
 });
 
-// local storage item display
+// displaying local storage results as links
 
-let cities = localStorage.getItem("cities");
-let citiesNav = document.getElementById("citiesNav");
-if (cities) {
-  let citiesList = JSON.parse(cities);
-  citiesNav.innerText = citiesList.join("⠀⠀⠀⠀⠀⠀");
+function displayCities(citiesList) {
+  const citiesNav = document.getElementById("citiesNav");
+  citiesNav.innerHTML = "";
+
+  citiesList.forEach((city) => {
+    const link = document.createElement("a");
+    link.href = "#";
+    link.innerText = city;
+    link.addEventListener("click", function () {
+      weather.findWeather(city);
+      forecast.findForecast(city);
+    });
+
+    citiesNav.appendChild(link);
+  });
+}
+
+const citiesList = JSON.parse(localStorage.getItem("cities") || "[]");
+const citiesNav = document.getElementById("citiesNav");
+if (citiesList.length > 0) {
+  displayCities(citiesList);
 } else {
-  citiesNav.innerText = " ";
+  citiesNav.innerText = "No searches yet";
 }
