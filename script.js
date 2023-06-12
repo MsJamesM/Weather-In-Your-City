@@ -1,3 +1,7 @@
+// day js clock
+var today = dayjs();
+$(".headerDate").text(today.format("MMMM D"));
+
 // displaying current weather
 
 let weather = {
@@ -11,23 +15,28 @@ let weather = {
     )
       .then((response) => response.json())
       .then((data) => this.weatherDisplay(data));
+    console.log(city);
   },
 
   weatherDisplay: function (data) {
     const { name } = data;
+    const { speed } = data.wind;
+    const { humidity } = data.main;
     const { icon } = data.weather[0];
     const { description } = data.weather[0];
     const fixDesc = description.charAt(0).toUpperCase() + description.slice(1);
-
     const { temp } = data.main;
     $("#placeholderDetails").remove();
     document.querySelector(".headerCity").innerText = name;
     document.querySelector(".bodyCity").innerText = name;
-    document.querySelector(".headerTemp").innerText = Math.round(temp) + "°";
     document.querySelector(".bodyTemp").innerText = Math.round(temp) + "°";
     document.querySelector(".icon").src =
       "https://openweathermap.org/img/wn/" + icon + "@2x.png";
     document.querySelector(".weatherDescription").innerText = fixDesc;
+    document.querySelector(".bodyWind").innerText = +Math.round(speed) + "%";
+    document.getElementById("windIcon").style.display = "block";
+    document.querySelector(".bodyHumidity").innerText = humidity + "%";
+    document.getElementById("humidityIcon").style.display = "block";
   },
 };
 

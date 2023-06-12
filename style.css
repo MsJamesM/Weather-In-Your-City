@@ -47,12 +47,15 @@ header {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 265%;
+    
 }
 
-.headerTemp {
-    font-size: 230%;
+.headerDate {
     padding-left: 2%;
-    color: #ebe4ff;
+    font-size: 210%;
+    font-weight: bold;
+    color: #6d3ad2;
+    text-shadow: 1px 1px 3px #43347d;
 }
 
 .citiesContainer {
@@ -96,8 +99,8 @@ a:hover {
 
 .cityDetails {
     margin: auto;
-    margin: auto;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     text-shadow: 1px 1px 3px #6658a9;
@@ -110,12 +113,42 @@ a:hover {
     height: 60%;
 }
 
+#row1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+#row2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 5%;
+    width: 80%;
+    font-size: 25px;
+}
+
+.fa-solid {
+    color: #8170d3;
+    padding-right: 15%;
+}
+
+#wind {
+    display: flex;
+}
+
+#humidity {
+    display: flex;
+}
+
 #forecastContainer {
     display: flex;
     justify-content: space-around;
     margin-left: 7.5%;
     margin-right: 7.5%;
     margin-top: 2%;
+    margin-bottom: 3%;
 }
 
 #widgetDate {
