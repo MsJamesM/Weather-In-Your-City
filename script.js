@@ -30,27 +30,6 @@ let weather = {
   },
 };
 
-// ----------- adding event listener to "submit" button ---------------
-
-inputSubmit.addEventListener("click", function () {
-  const cityInput = document.getElementById("cityInput").value;
-  weather.findWeather(cityInput);
-  forecast.findForecast(cityInput);
-  document.querySelector(".icon").style.display = "block";
-});
-
-cityInput.addEventListener("keypress", function (event) {
-  $("cityInput").value;
-  if (event.key === "Enter") {
-    event.preventDefault();
-    weather.findWeather(cityInput.value);
-    forecast.findForecast(cityInput.value);
-    document.querySelector(".icon").style.display = "block";
-  }
-});
-
-// don't forget: add errors if input empty or invalid
-
 // ------------------ displaying five day forecast -------------------
 let forecast = {
   key: "e2c74133da560a3e8633772b5632f3bf",
@@ -97,3 +76,48 @@ let forecast = {
       });
   },
 };
+
+// ----------- adding event listener to "submit" button ---------------
+
+inputSubmit.addEventListener("click", function () {
+  const cityInput = document.getElementById("cityInput").value;
+  weather.findWeather(cityInput);
+  forecast.findForecast(cityInput);
+  document.querySelector(".icon").style.display = "block";
+
+  let cities = localStorage.getItem("cities");
+  let citiesList = cities ? JSON.parse(cities) : [];
+  citiesList.push(cityInput);
+  localStorage.setItem("cities", JSON.stringify(citiesList));
+  let citiesNav = document.getElementById("citiesNav");
+  citiesNav.innerText = citiesList.join(" ");
+});
+
+cityInput.addEventListener("keypress", function (event) {
+  $("cityInput").value;
+  if (event.key === "Enter") {
+    event.preventDefault();
+    const cityInput = document.getElementById("cityInput").value;
+    weather.findWeather(cityInput);
+    forecast.findForecast(cityInput);
+    document.querySelector(".icon").style.display = "block";
+
+    // ----------------- adding local storage capability -----------------
+
+    let cities = localStorage.getItem("cities");
+    let citiesList = cities ? JSON.parse(cities) : [];
+    citiesList.push(cityInput);
+    localStorage.setItem("cities", JSON.stringify(citiesList));
+    let citiesNav = document.getElementById("citiesNav");
+    citiesNav.innerText = citiesList.join("⠀⠀ ");
+  }
+});
+
+let cities = localStorage.getItem("cities");
+let citiesNav = document.getElementById("citiesNav");
+if (cities) {
+  let citiesList = JSON.parse(cities);
+  citiesNav.innerText = citiesList.join("⠀⠀ ");
+} else {
+  citiesNav.innerText = " ";
+}

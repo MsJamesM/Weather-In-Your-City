@@ -54,9 +54,11 @@ header {
     color: #ebe4ff;
 }
 
-.citiesNav {
+.citiesContainer {
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
+    white-space: nowrap;
     margin-left: auto;
     margin-right: auto;
     margin-top: 3%;
@@ -66,14 +68,19 @@ header {
     padding-left: 3%;
     padding-top: 1%;
     padding-bottom: 1%;
+    max-height: 50%;
     width: 80%;
 }
 
-.citiesNav a {
-    text-decoration: none;
+.citiesNav {
+    display: inline;
+    overflow: hidden;
+    white-space: nowrap;
     font-size: 20px;
     color:#9c86d7;
 }
+
+
 
 .cityDetails {
     margin: auto;
@@ -81,12 +88,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #7663c9; 
+    font-size: 20px;
     margin-top: 2%;
-    background-color: #7663c9;
     padding: 3%;
     width: 80%;
     height: 60%;
-    
 }
 
 #forecastContainer {
@@ -98,7 +105,7 @@ header {
 }
 
 #widgetDate {
-    color: #9c85ff;
+    color: #a595ed;
     font-weight: bold;
     font-size: 18px;
 }
