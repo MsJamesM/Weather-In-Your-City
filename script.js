@@ -1,4 +1,4 @@
-// ------------------- displaying current weather ---------------------
+// displaying current weather
 
 let weather = {
   key: "e2c74133da560a3e8633772b5632f3bf",
@@ -30,7 +30,8 @@ let weather = {
   },
 };
 
-// ------------------ displaying five day forecast -------------------
+// displaying five day forecast
+
 let forecast = {
   key: "e2c74133da560a3e8633772b5632f3bf",
   findForecast: function (city) {
@@ -77,13 +78,15 @@ let forecast = {
   },
 };
 
-// ----------- adding event listener to "submit" button ---------------
+// event listeners
 
 inputSubmit.addEventListener("click", function () {
   const cityInput = document.getElementById("cityInput").value;
   weather.findWeather(cityInput);
   forecast.findForecast(cityInput);
   document.querySelector(".icon").style.display = "block";
+
+  // local storage to click
 
   let cities = localStorage.getItem("cities");
   let citiesList = cities ? JSON.parse(cities) : [];
@@ -102,22 +105,24 @@ cityInput.addEventListener("keypress", function (event) {
     forecast.findForecast(cityInput);
     document.querySelector(".icon").style.display = "block";
 
-    // ----------------- adding local storage capability -----------------
+    // local storage to keypress
 
     let cities = localStorage.getItem("cities");
     let citiesList = cities ? JSON.parse(cities) : [];
-    citiesList.push(cityInput);
+    citiesList.unshift(cityInput);
     localStorage.setItem("cities", JSON.stringify(citiesList));
     let citiesNav = document.getElementById("citiesNav");
-    citiesNav.innerText = citiesList.join("⠀⠀ ");
+    citiesNav.innerText = citiesList.join("⠀⠀⠀⠀⠀⠀");
   }
 });
+
+// local storage item display
 
 let cities = localStorage.getItem("cities");
 let citiesNav = document.getElementById("citiesNav");
 if (cities) {
   let citiesList = JSON.parse(cities);
-  citiesNav.innerText = citiesList.join("⠀⠀ ");
+  citiesNav.innerText = citiesList.join("⠀⠀⠀⠀⠀⠀");
 } else {
   citiesNav.innerText = " ";
 }
